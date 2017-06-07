@@ -3,7 +3,7 @@ namespace App\Controller;
 use System\Controller;
 use app\model\Medico\MedicoDAO;
 
-class IndexController extends Controller {
+class MedicosController extends Controller {
 
 	private $medico;
 
@@ -12,11 +12,10 @@ class IndexController extends Controller {
 		parent::__construct();
 		$this->medico = new MedicoDAO();
 	}
-
 	public function index(){
+
 		//enviando a view da função
-		$data['view'] = 'index';
-		
+		$data['view'] = 'medicos';
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
 		$data['data']['medicos'] = $this->medico->listaTodos(); 
 

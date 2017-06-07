@@ -1,10 +1,10 @@
 <?php
 
-/*
+
 require_once('app/config/constantes.php');
-require_once('system/system.php');
-require_once('system/controller.php');
-require_once('system/model.php');*/
+// require_once('system/system.php');
+// require_once('system/controller.php');
+// require_once('system/model.php');
 
 /*function __autoload( $file ) {
 	if ( file_exists(MODEL . $file . '.php') ){

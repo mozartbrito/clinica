@@ -79,9 +79,9 @@ class System {
 	}
 
 	public function run(){
-
 		$controller = DIRECTORY_SEPARATOR . \ConfigPath::$namespace["aplication"] . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR .  ucfirst($this->_controller) . "Controller";
 		$app = new $controller();
+		
 		/*if (!file_exists($controller_path)){
 			throw new \Exception("Error: The controller doesn't exist!", 1);
 		}
