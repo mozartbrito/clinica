@@ -10,14 +10,25 @@ class Model{
 		$this->db = new \PDO('mysql:host=' . $db['hostname'] . ';dbname=' . $db['database'], $db['username'], $db['password']);
 	}
 	
-	public function criar( Array $dados ){
-		$campos = implode(", ", array_keys($dados));
+	public function criar( $objeto ){
+		$class = get_class( $objeto );
+		$objeto = ( Array ) $objeto;
+
+		$dados = array();
+		foreach ($objeto as $key => $value) {
+			if ( $value != '' ) $dados[str_replace( $class, "", $key )] = $value;
+		}
+
+		$campos = implode(", ", array_keys( $dados ));
 		$valores = "'" . implode("','", array_values($dados))."'";
-		return $this->db->query( "INSERT INTO {$this->_tabela} ({$campos}) VALUES ({$valores})" );
+		
+		// echo "INSERT INTO {$this->_tabela} ({$campos}) VALUES ({$valores})";die;
+		
+		$this->db->query( "INSERT INTO {$this->_tabela} ({$campos}) VALUES ({$valores})" );
+		return $this->db->lastInsertId();
 	}
 	
 	public function listar($class, Array $select = null ){
-
 		$fields = ( isset($select['fields']) ? "{$select['fields']}" : "*");
 		$join = ( isset($select['join']) ? "{$select['join']}" : "");
 		$where = ( isset($select['where']) ? "WHERE {$select['where']}" : "");
@@ -32,6 +43,23 @@ class Model{
 
 		//$sql->setFetchMode(\PDO::FETCH_ASSOC);
 		return $sql->fetchAll();
+	}
+
+	public function listarUm($class, Array $select = null ){
+		$fields = ( isset($select['fields']) ? "{$select['fields']}" : "*");
+		$join = ( isset($select['join']) ? "{$select['join']}" : "");
+		$where = ( isset($select['where']) ? "WHERE {$select['where']}" : "");
+		$limit = ( isset($select['limit']) ? "LIMIT {$select['limit']}" : "");
+		$offset = ( isset($select['offset']) ? "OFFSET {$select['offset']}" : "");
+		$orderby = ( isset($select['orderby']) ? "ORDER BY {$select['orderby']}" : "");
+		
+		$sql = $this->db->prepare( "SELECT {$fields} FROM {$this->_tabela} {$join} {$where} {$orderby} {$limit} {$offset}" );
+
+		$sql->setFetchMode(\PDO::FETCH_CLASS, $class);
+		$sql->execute();
+
+		//$sql->setFetchMode(\PDO::FETCH_ASSOC);
+		return $sql->fetch();
 	}
 	
 	public function atualizar( Array $dados, $where ){

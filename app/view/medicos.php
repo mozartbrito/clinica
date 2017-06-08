@@ -15,7 +15,7 @@
 			<td><?php echo $medico->getNome(); ?></td>
 			<td><?php echo $medico->getTurno(); ?></td>
 			<td><?php echo $medico->especialidade; ?></td>
-			<td><a href="<?php echo BASE_URL; ?>medicos/visualizar/<?php echo $medico->getId(); ?>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
+			<td><a href="<?php echo BASE_URL; ?>medicos/form/id/<?php echo $medico->getId(); ?>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
 		</tr>
 	<?php } ?>
 

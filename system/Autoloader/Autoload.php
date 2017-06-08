@@ -71,7 +71,7 @@ class Autoload {
 	}
 
 	protected function requireFile($file) {
-		 //echo $file." > ".(file_exists($file) ? "true" : "false") . "<br>";
+		 // echo $file." > ".(file_exists($file) ? "true" : "false") . "<br>";
 		if (file_exists($file)) {
 			require_once $file;
 			return $file;

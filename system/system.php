@@ -88,10 +88,11 @@ class System {
 
 		require_once($controller_path);
 		$app = new $this->_controller();
+		*/
 
 		if( !method_exists($app, $this->_action)){
-			throw new \Exception("Error: Action doesn't exist!", 1);
-		}*/
+			throw new \Exception("Error 404: Action doesn't exist!", 1);
+		}
 
 		$action = $this->_action;
 		$app->$action();

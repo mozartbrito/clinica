@@ -8,13 +8,23 @@ use System\Model;
 		public function listaTodos() {
 			$this->_tabela = 'medico m';
 
-			$select['fields'] = "m.*, e.especialidade";
+			$select['fields'] = "m.*, e.id id_espec, e.especialidade";
 			$select['join'] = "LEFT JOIN especialidade e ON m.especialidade_id = e.id";
 			return $this->listar($this->_class, $select);
-			/*$sql = $this->db->prepare( "SELECT * FROM {$this->_tabela}" );
-
-			$sql->setFetchMode(\PDO::FETCH_CLASS, 'App\Model\Medico\Medico');
-			$sql->execute();
-			return $sql->fetchAll();*/
 		}
+
+		public function listaUnico($id){
+			$this->_tabela = 'medico m';
+
+			$select['fields'] = "m.*, e.id id_espec, e.especialidade";
+			$select['join'] = "LEFT JOIN especialidade e ON m.especialidade_id = e.id";
+			$select['where'] = "m.id = '" . $id . "'";
+			return $this->listarUm($this->_class, $select);
+		}
+
+		public function insere(Medico $medico){
+			$id_cadastrado = $this->criar( $medico );
+			return $id_cadastrado;
+		}
+
 	}
