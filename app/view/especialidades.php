@@ -9,11 +9,14 @@
   </tr>
 
 	<?php foreach ($especialidades as $especialidade) { ?>
-		<tr>
+	<tr>
 			<td><?php echo $especialidade->getId(); ?></td>
 			<td><?php echo $especialidade->getEspecialidade(); ?></td>
 			<td><?php echo $especialidade->getDescricao(); ?></td>
-			<td><a href="<?php echo BASE_URL; ?>especialidades/visualizar/<?php echo $especialidade->getId(); ?>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></td>
+			<td>
+				<a href="<?php echo BASE_URL; ?>especialidades/form/id/<?php echo $especialidade->getId(); ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+				<a href="<?php echo BASE_URL; ?>especialidades/remove/id/<?php echo $especialidade->getId(); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+			</td>
 		</tr>
 	<?php } ?>
 

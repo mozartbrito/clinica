@@ -10,7 +10,7 @@ class Model{
 		$this->db = new \PDO('mysql:host=' . $db['hostname'] . ';dbname=' . $db['database'], $db['username'], $db['password']);
 	}
 	
-	public function criar( $objeto ){
+	// public function criar( $objeto ){
 		// $class = get_class( $objeto );
 		// $objeto = ( Array ) $objeto;
 
@@ -38,8 +38,8 @@ class Model{
 
 		// die;
 
-		return;
-	}
+	// 	return;
+	// }
 	
 	public function listar($class, Array $select = null ){
 		$fields = ( isset($select['fields']) ? "{$select['fields']}" : "*");
@@ -75,14 +75,14 @@ class Model{
 		return $sql->fetch();
 	}
 	
-	public function atualizar( Array $dados, $where ){
-		foreach ( $dados as $indice => $valor){
-			$campos[] = "{$indice} = '{$valor}'";
-		}
-		$campos = implode(", ", $campos);
-		$this->db->query( "UPDATE {$this->_tabela} SET {$campos} WHERE {$where}" );
-		return $campos;
-	}
+	// public function atualizar( Array $dados, $where ){
+		// foreach ( $dados as $indice => $valor){
+		// 	$campos[] = "{$indice} = '{$valor}'";
+		// }
+		// $campos = implode(", ", $campos);
+		// $this->db->query( "UPDATE {$this->_tabela} SET {$campos} WHERE {$where}" );
+		// return $campos;
+	// }
 	
 	public function deletar( $where ){
 		return $this->db->query( "DELETE FROM {$this->_tabela} WHERE {$where}" );
