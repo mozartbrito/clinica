@@ -4,4 +4,4 @@
 	define( 'MODEL', 'app/model/');
 	define( 'HELPERS', 'system/helpers/');
 	
-	define('BASE_URL', 'http://localhost/clinica/');
+	define('BASE_URL', 'http://localhost:8083/clinica/');
