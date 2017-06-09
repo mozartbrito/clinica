@@ -1,4 +1,4 @@
-<h1>Clínica CEO :: Médicos / <?php echo ( isset( $medico ) ) ? 'Atualizar' : 'Novo'; ?></h1>
+<h2>Clínica CEO :: Médicos / <?php echo ( isset( $medico ) ) ? 'Atualizar' : 'Novo'; ?></h2>
 
 <br />
 
@@ -32,5 +32,5 @@
     </select>
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-success">Salvar</button>
 </form>

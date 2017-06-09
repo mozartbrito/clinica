@@ -23,8 +23,25 @@ use System\Model;
 		}
 
 		public function insere(Medico $medico){
-			$id_cadastrado = $this->criar( $medico );
-			return $id_cadastrado;
+			$sql = $this->db->prepare("INSERT INTO {$this->_tabela} (nome, especialidade_id, turno) 
+				VALUES (?, ?, ?)");
+
+			$sql->execute( array( $medico->getNome(), $medico->getEspecialidade(), $medico->getTurno() ) );
+		
+			return $this->db->lastInsertId();
+		}
+
+		public function atualiza(Medico $medico){
+			$sql = $this->db->prepare("UPDATE {$this->_tabela} SET nome = ?, especialidade_id = ?, turno = ?
+				WHERE id = ?");
+
+			$sql->execute( array( $medico->getNome(), $medico->getEspecialidade(), $medico->getTurno(), 
+				$medico->getId() ) );
+		}
+
+		public function deleta($id){
+			$where = "id = " . $id;
+			return $this->deletar( $where );
 		}
 
 	}

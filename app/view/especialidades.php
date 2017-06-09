@@ -1,4 +1,4 @@
-<h1>Clínica CEO :: Especialidades</h1>
+<h2>Clínica CEO :: Especialidades</h2>
 
 <table class="table table-hover table-striped table-bordered">
   <tr>

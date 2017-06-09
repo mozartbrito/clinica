@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 require_once('app/config/constantes.php');
 // require_once('system/system.php');
