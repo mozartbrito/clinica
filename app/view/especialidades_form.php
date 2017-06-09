@@ -9,12 +9,12 @@
 
   <div class="form-group">
     <label for="especialidade">Especialidade</label>
-    <input type="text" class="form-control" id="especialidade" name="especialidade" placeholder="Nome do Médico" value="<?php echo ( isset( $especialidade ) ) ? $especialidade->getEspecialidade() : ''; ?>">
+    <input type="text" class="form-control" id="especialidade" name="especialidade" placeholder="Nome da Especialidade" value="<?php echo ( isset( $especialidade ) ) ? $especialidade->getEspecialidade() : ''; ?>">
   </div>
 
   <div class="form-group">
     <label for="descricao">Descrição</label>
-    <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Nome do Médico" value="<?php echo ( isset( $especialidade ) ) ? $especialidade->getDescricao() : ''; ?>">
+    <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Uma breve descrição da Especialidade"><?php echo ( isset( $especialidade ) ) ? $especialidade->getDescricao() : ''; ?></textarea>
   </div>
 
   <button type="submit" class="btn btn-success">Salvar</button>

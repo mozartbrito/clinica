@@ -24,7 +24,7 @@ namespace App\Model\Especialidade;
      *
      * @return self
      */
-    private function setId($id)
+    public function setId($id)
     {
         $this->id = $id;
 
@@ -48,7 +48,7 @@ namespace App\Model\Especialidade;
      *
      * @return self
      */
-    private function setEspecialidade($especialidade)
+    public function setEspecialidade($especialidade)
     {
         $this->especialidade = $especialidade;
 
@@ -72,7 +72,7 @@ namespace App\Model\Especialidade;
      *
      * @return self
      */
-    private function setDescricao($descricao)
+    public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
 

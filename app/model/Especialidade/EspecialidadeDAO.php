@@ -10,7 +10,8 @@ use System\Model;
 		}
 
 		public function listaUnico($id){
-			return $this->listarUm($this->_class);
+			$select['where'] = "id = '" . $id . "'";
+			return $this->listarUm($this->_class, $select);
 		}
 
 		public function insere(Especialidade $especialidade){
