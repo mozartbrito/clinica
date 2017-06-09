@@ -1,4 +1,7 @@
-</div>
+
+<footer class="footer">
+      <p>Clínica CEO</p>
+  </footer>
 
 </div>
     <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->

@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="<?php echo BASE_URL; ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>css/estilo.css" rel="stylesheet">
 
     <!-- HTML5 shim e Respond.js para suporte no IE8 de elementos HTML5 e media queries -->
     <!-- ALERTA: Respond.js não funciona se você visualizar uma página file:// -->
@@ -19,3 +20,8 @@
   </head>
   <body>
 <div class="container">
+<div class="row">
+  <a href="<?php echo BASE_URL; ?>">
+    <img src="<?php echo BASE_URL; ?>img/logo.png" class="" width="180" style="margin: 10px 0 10px 30px;">
+  </a>
+</div>

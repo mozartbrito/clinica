@@ -1,0 +1,41 @@
+.conteudo{
+	min-height: 250px;
+}
+nav.navbar.navbar-default{
+  background-color: #337ab7!important;
+  border-color: #2e6da4!important;
+  margin-top: 10px;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+	background-color: #2e6da4;
+	color: white;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	background-color: #2e6da4;
+	color: white;
+}
+nav.navbar.navbar-default a{
+  color: white;
+}
+ul.dropdown-menu li a{
+  color: #2e6da4!important;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover  {
+  color: #ccc;
+}
+
+li p.navbar-text, a.navbar-brand {
+  color: white!important;
+  font-weight: bolder;
+}
+footer.footer {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  margin-top: 55px;
+  color: white;
+  border-radius: 5px;
+}
+
+footer.footer p {
+  padding: 10px;
+}
