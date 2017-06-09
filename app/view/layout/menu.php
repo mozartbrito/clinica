@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo BASE_URL; ?>">Home</a></li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Médicos <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -22,6 +23,7 @@
             <li><a href="<?php echo BASE_URL; ?>medicos/form">Cadastrar</a></li>
           </ul>
         </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Especialidades <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -36,11 +38,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário Logado <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Perfil</a></li>
-            <!-- <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li> -->
+            <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-cog"> Perfil</a></li>
+            <li><a href="<?php echo BASE_URL; ?>usuarios" class="glyphicon glyphicon-user"> Usuários</a></li>
+            <!-- <li><a href="<?php echo BASE_URL; ?>">Something else here</a></li> -->
             <li role="separator" class="divider"></li>
-            <li><a href="#">Sair</a></li>
+            <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-log-out"> Sair</a></li>
           </ul>
         </li>
       </ul>
