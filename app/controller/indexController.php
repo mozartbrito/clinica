@@ -18,7 +18,7 @@ class IndexController extends Controller {
 		$data['view'] = 'index';
 		
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
-		$data['data']['medicos'] = $this->medico->listaTodos(); 
+		// $data['data']['medicos'] = $this->medico->listaTodos(); 
 
 		//carregando o template principal
 		$this->view('layout/principal', $data);

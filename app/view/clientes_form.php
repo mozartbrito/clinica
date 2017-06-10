@@ -27,7 +27,7 @@
   <div class="row">
     <div class="form-group col-md-4 col-sm-4 col-xs-12">
       <label for="data_nascimento">Data de Nascimento</label>
-      <input type="text" class="form-control datepicker" id="data_nascimento" name="data_nascimento" placeholder="Data de nascimento" value="<?php echo ( isset( $cliente ) ) ? $cliente->getDataNascimento() : ''; ?>">
+      <input type="text" class="form-control datepicker" id="data_nascimento" name="data_nascimento" placeholder="Data de nascimento" value="<?php if( isset( $cliente ) ) : $data = new DateTime( $cliente->getDataNascimento() ); echo $data->format( 'd/m/Y' ); endif; ?>">
     </div>
 
     <div class="form-group col-md-8 col-sm-8 col-xs-12">

@@ -8,7 +8,7 @@ class ConfigPath {
 
 	public static $system = "System";
 
-	public static $application = "App";
+	public static $application = "App";	
 
 	public static $namespace = [
 		"aplication" => "App"

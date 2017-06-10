@@ -14,7 +14,12 @@
 		<tr>
 			<td><?php echo $cliente->getId(); ?></td>
 			<td><?php echo $cliente->getNome(); ?></td>
-			<td><?php echo $cliente->getDataNascimento(); ?></td>
+			<td>
+				<?php
+					$data = new DateTime( $cliente->getDataNascimento() );
+					echo $data->format( 'd/m/Y' );
+				?>
+			</td>
 			<td><?php echo $cliente->getFone().' / '.$cliente->getCelular(); ?></td>
 			<td><?php echo $cliente->getEmail(); ?></td>
 			<td>

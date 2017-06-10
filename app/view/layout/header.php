@@ -19,10 +19,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
   <body>
-<div class="container">
-<div class="row">
-  <a href="<?php echo BASE_URL; ?>">
-    <img src="<?php echo BASE_URL; ?>img/logo.png" class="" width="180" style="margin: 10px 0 10px 30px;">
-  </a>
-</div>
+  <div class="container">
+    <div class="row">
+      <a href="<?php echo BASE_URL; ?>">
+        <img src="<?php echo BASE_URL; ?>img/logo.png" class="" width="180" style="margin: 10px 0 10px 30px;">
+      </a>
+    </div>
