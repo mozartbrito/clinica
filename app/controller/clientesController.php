@@ -64,7 +64,7 @@ class ClientesController extends Controller {
 			$_SESSION['danger'] = "Não foi possível efetuar o cadastro!";
 			header( "Location: " . $this->site_url( "clientes/form" ) );
 		} else {
-			$_SESSION['success'] = "Cliente salva com sucesso!";
+			$_SESSION['success'] = "Cliente salvo com sucesso!";
 			header( "Location: " . $this->site_url( "clientes/form/id/" . $id ) );
 		} 
 	}
@@ -73,9 +73,9 @@ class ClientesController extends Controller {
 		$parametros = $this->getParam();
 		$result = $this->cliente->deleta( $parametros['id'] );
 		if( $result > 0 ) { 
-			$_SESSION['success'] = "Cliente removida com sucesso!"; 
+			$_SESSION['success'] = "Cliente removido com sucesso!"; 
 		} else { 
-			$_SESSION['danger'] = "Cliente não removida!"; 
+			$_SESSION['danger'] = "Cliente não removido!";
 		}
 		header( "Location: " . $this->site_url( "clientes" ) );
 	}

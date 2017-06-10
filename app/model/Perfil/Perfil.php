@@ -1,5 +1,5 @@
 <?php
-	namespace App\Model\Perfil
+	namespace App\Model\Perfil;
 
 	class Perfil{
 		private $id;

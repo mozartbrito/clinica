@@ -11,10 +11,10 @@
   </tr>
 
 	<?php foreach ($clientes as $cliente) { ?>
-	<tr>
+		<tr>
 			<td><?php echo $cliente->getId(); ?></td>
 			<td><?php echo $cliente->getNome(); ?></td>
-			<td><?php echo $cliente->getNascimento(); ?></td>
+			<td><?php echo $cliente->getDataNascimento(); ?></td>
 			<td><?php echo $cliente->getFone().' / '.$cliente->getCelular(); ?></td>
 			<td><?php echo $cliente->getEmail(); ?></td>
 			<td>

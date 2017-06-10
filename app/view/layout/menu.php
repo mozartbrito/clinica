@@ -48,6 +48,7 @@
           <ul class="dropdown-menu">
             <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-cog"> Perfil</a></li>
             <li><a href="<?php echo BASE_URL; ?>usuarios" class="glyphicon glyphicon-user"> Usuários</a></li>
+            <li><a href="<?php echo BASE_URL; ?>perfil" class="glyphicon glyphicon-user"> Perfils</a></li>
             <!-- <li><a href="<?php echo BASE_URL; ?>">Something else here</a></li> -->
             <li role="separator" class="divider"></li>
             <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-log-out"> Sair</a></li>

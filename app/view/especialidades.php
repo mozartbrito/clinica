@@ -9,7 +9,7 @@
   </tr>
 
 	<?php foreach ($especialidades as $especialidade) { ?>
-	<tr>
+		<tr>
 			<td><?php echo $especialidade->getId(); ?></td>
 			<td><?php echo $especialidade->getEspecialidade(); ?></td>
 			<td><?php echo $especialidade->getDescricao(); ?></td>

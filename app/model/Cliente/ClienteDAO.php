@@ -15,20 +15,17 @@ use System\Model;
 		}
 
 		public function insere(Cliente $cliente){
-			$sql = $this->db->prepare("INSERT INTO {$this->_tabela} (cliente, descricao) 
-				VALUES (?, ?)");
+			$sql = $this->db->prepare("INSERT INTO {$this->_tabela} (nome, data_nascimento, ci, cpf, endereco, fone, celular, email, profissao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-			$sql->execute( array( $cliente->getCliente(), $cliente->getDescricao() ) );
+			$sql->execute( array( $cliente->getNome(), $cliente->getDataNascimento(), $cliente->getCi(), $cliente->getCpf(), $cliente->getEndereco(), $cliente->getFone(), $cliente->getCelular(), $cliente->getEmail(), $cliente->getProfissao() ) );
 		
 			return $this->db->lastInsertId();
 		}
 
 		public function atualiza(Cliente $cliente){
-			$sql = $this->db->prepare("UPDATE {$this->_tabela} SET cliente = ?, descricao = ?
-				WHERE id = ?");
+			$sql = $this->db->prepare("UPDATE {$this->_tabela} SET nome = ?, data_nascimento = ?, ci = ?, cpf = ?, endereco = ?, fone = ?, celular = ?, email = ?, profissao = ? WHERE id = ?");
 
-			$sql->execute( array( $cliente->getCliente(), $cliente->getDescricao(), 
-				$cliente->getId() ) );
+			$sql->execute( array( $cliente->getNome(), $cliente->getDataNascimento(), $cliente->getCi(), $cliente->getCpf(), $cliente->getEndereco(), $cliente->getFone(), $cliente->getCelular(), $cliente->getEmail(), $cliente->getProfissao(), $cliente->getId() ) );
 		}
 
 		public function deleta($id){

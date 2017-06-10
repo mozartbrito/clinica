@@ -18,7 +18,7 @@ class PerfilController extends Controller {
 		//enviando a view da função
 		$data['view'] = 'perfil';
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
-		$data['data']['perfil'] = $this->perfil->listaTodos(); 
+		$data['data']['perfis'] = $this->perfil->listaTodos(); 
 
 		//carregando o template principal
 		$this->view('layout/principal', $data);

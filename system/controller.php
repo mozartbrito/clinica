@@ -1,7 +1,5 @@
 <?php 
-
 namespace System;
-use System\System;
 
 class Controller extends System {
 

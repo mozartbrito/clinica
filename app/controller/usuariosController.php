@@ -3,6 +3,7 @@ namespace App\Controller;
 use System\Controller;
 use app\model\Usuario\Usuario;
 use app\model\Usuario\UsuarioDAO;
+use app\model\Perfil\PerfilDAO;
 
 class UsuariosController extends Controller {
 
@@ -12,6 +13,7 @@ class UsuariosController extends Controller {
 	{
 		parent::__construct();
 		$this->usuario = new UsuarioDAO();
+		$this->perfil = new PerfilDAO();
 	}
 	public function index(){
 
@@ -34,6 +36,8 @@ class UsuariosController extends Controller {
 			$data['data']['usuario'] = $this->usuario->listaUnico( $parametros['id'] );
 			// echo "<pre>"; print_r( $data['data']['usuario'] ); die;
 		}
+		// Lista de perfis cadastrados
+		$data['data']['perfis'] = $this->perfil->listaTodos();
 
 		//carregando o template principal
 		$this->view('layout/principal', $data);
@@ -41,8 +45,16 @@ class UsuariosController extends Controller {
 
 	public function salvar(){
 		$_usuario = new Usuario();
-		$_usuario->setEspecialidade( $_POST['especialidade'] );
-		$_usuario->setDescricao( $_POST['descricao'] );
+		
+		$_usuario->setNome( $_POST['nome'] );
+		$_usuario->setLogin( $_POST['login'] );
+		$_usuario->setSenha( $_POST['senha'] );
+		$_usuario->setPerfilId( $_POST['perfil_id'] );
+		$_usuario->setCi( $_POST['ci'] );
+		$_usuario->setCpf( $_POST['cpf'] );
+		$_usuario->setEndereco( $_POST['endereco'] );
+		$_usuario->setFone( $_POST['fone'] );
+		$_usuario->setCelular( $_POST['celular'] );
 
 		if ( !isset( $_POST['id'] ) ) {
 			$id = $this->usuario->insere( $_usuario );
@@ -56,8 +68,8 @@ class UsuariosController extends Controller {
 			$_SESSION['danger'] = "Não foi possível efetuar o cadastro!";
 			header( "Location: " . $this->site_url( "usuarios/form" ) );
 		} else {
-			$_SESSION['success'] = "Especialidade salva com sucesso!";
-			header( "Location: " . $this->site_url( "especialidades/form/id/" . $id ) );
+			$_SESSION['success'] = "Usuário salvo com sucesso!";
+			header( "Location: " . $this->site_url( "usuarios/form/id/" . $id ) );
 		} 
 	}
 
@@ -65,11 +77,11 @@ class UsuariosController extends Controller {
 		$parametros = $this->getParam();
 		$result = $this->usuario->deleta( $parametros['id'] );
 		if( $result > 0 ) { 
-			$_SESSION['success'] = "Especialidade removida com sucesso!"; 
+			$_SESSION['success'] = "Usuário removido com sucesso!"; 
 		} else { 
-			$_SESSION['danger'] = "Especialidade não removida!"; 
+			$_SESSION['danger'] = "Usuário não removido!"; 
 		}
-		header( "Location: " . $this->site_url( "especialidades" ) );
+		header( "Location: " . $this->site_url( "usuarios" ) );
 	}
 
 }
