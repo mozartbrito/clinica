@@ -19,9 +19,9 @@ class LoginController extends Controller {
 			header('Location: ' . $this->site_url('index'));
 		} else {
 			//enviando a view da função
-			$data['view'] = 'login';
+			//$data['view'] = 'login';
 			//carregando o template principal
-			$this->view('layout/principal', $data);
+			$this->view('login');
 		}
 		
 	}

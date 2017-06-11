@@ -48,9 +48,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['autenticado']['nome']; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-cog"> Perfil</a></li>
+              <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-ok"> Meu Perfil</a></li>
               <li><a href="<?php echo BASE_URL; ?>usuarios" class="glyphicon glyphicon-user"> Usuários</a></li>
-              <li><a href="<?php echo BASE_URL; ?>perfil" class="glyphicon glyphicon-user"> Perfils</a></li>
+              <li><a href="<?php echo BASE_URL; ?>perfil" class="glyphicon glyphicon-cog"> Perfils</a></li>
               <!-- <li><a href="<?php echo BASE_URL; ?>">Something else here</a></li> -->
               <li role="separator" class="divider"></li>
               <li><a href="<?php echo BASE_URL; ?>login/logout" class="glyphicon glyphicon-log-out"> Sair</a></li>
@@ -62,3 +62,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<a href="javascript:history.back(-1)" class="btn btn-warning pull-right">Voltar</a>
