@@ -67,6 +67,8 @@ class Model{
 		$orderby = ( isset($select['orderby']) ? "ORDER BY {$select['orderby']}" : "");
 		
 		$sql = $this->db->prepare( "SELECT {$fields} FROM {$this->_tabela} {$join} {$where} {$orderby} {$limit} {$offset}" );
+
+		// print_r($sql);die;
 		$sql->setFetchMode(\PDO::FETCH_CLASS, $class);
 		$sql->execute();
 

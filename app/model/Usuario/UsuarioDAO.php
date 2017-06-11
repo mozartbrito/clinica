@@ -13,12 +13,19 @@ use System\Model;
 			return $this->listar($this->_class, $select);
 		}
 
-		public function listaUnico($id){
+		public function listaUnico($id = '', Array $usuario = null ){
 			$this->_tabela = 'usuario u';
 
 			$select['fields'] = "u.*, p.id AS id_perfil, p.perfil, p.descricao";
 			$select['join'] = "LEFT JOIN perfil p ON u.perfil_id = p.id";
-			$select['where'] = "u.id = '" . $id . "'";
+
+			if( $id != '' ) {
+				$select['where'] = "u.id = '" . $id . "'";
+			} else if( isset( $usuario['login'] ) ) {
+				$select['where'] = "u.login = '" . $usuario['login'] . "'"; 
+				if( isset( $usuario['senha'] ) ) $select['where'] .= "AND u.senha = '" . $usuario['senha'] . "'";
+			}
+
 			return $this->listarUm($this->_class, $select);
 		}
 

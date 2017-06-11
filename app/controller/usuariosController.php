@@ -9,14 +9,21 @@ class UsuariosController extends Controller {
 
 	private $usuario;
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
-		$this->usuario = new UsuarioDAO();
-		$this->perfil = new PerfilDAO();
-	}
-	public function index(){
 
+		if( !isset( $_SESSION['autenticado'] ) ) {
+			$_SESSION['danger'] = "Acesso negado, efetue o login!";
+			// Se não haver usuário logado, redireciona para a tela de login
+			header('Location: ' . $this->site_url('login'));
+		} else {
+			$this->perfil = new PerfilDAO();
+			$this->usuario = new UsuarioDAO();
+		}
+
+	}
+
+	public function index(){
 		//enviando a view da função
 		$data['view'] = 'usuarios';
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')

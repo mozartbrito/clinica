@@ -11,7 +11,14 @@ class EspecialidadesController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->especialidade = new EspecialidadeDAO();
+		if( !isset( $_SESSION['autenticado'] ) ) {
+			$_SESSION['danger'] = "Acesso negado, efetue o login!";
+			// Se não haver usuário logado, redireciona para a tela de login
+			header('Location: ' . $this->site_url('login'));
+		} else {
+			$this->especialidade = new EspecialidadeDAO();
+		}
+		
 	}
 	public function index(){
 

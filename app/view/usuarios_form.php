@@ -44,7 +44,7 @@
 	<div class="row">
 	  <div class="form-group col-md-4 col-sm-4 col-xs-12">
 	    <label for="login">Login</label>
-	    <input type="text" class="form-control data" id="login" name="login" placeholder="Login do usuário" value="<?php echo ( isset( $usuario ) ) ? $usuario->getLogin() : ''; ?>">
+	    <input type="text" class="form-control" id="login" name="login" placeholder="Login do usuário" value="<?php echo ( isset( $usuario ) ) ? $usuario->getLogin() : ''; ?>">
 	  </div>
 
 	  <div class="form-group col-md-4 col-sm-4 col-xs-12">

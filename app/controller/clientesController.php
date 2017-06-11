@@ -8,13 +8,20 @@ class ClientesController extends Controller {
 
 	private $cliente;
 
-	public function __construct()
-	{
+	public function __construct()	{
 		parent::__construct();
-		$this->cliente = new ClienteDAO();
-	}
-	public function index(){
 
+		if( !isset( $_SESSION['autenticado'] ) ) {
+			$_SESSION['danger'] = "Acesso negado, efetue o login!";
+			// Se não haver usuário logado, redireciona para a tela de login
+			header('Location: ' . $this->site_url('login'));
+		} else {
+			$this->cliente = new ClienteDAO();
+		}
+
+	}
+
+	public function index(){
 		//enviando a view da função
 		$data['view'] = 'clientes';
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
@@ -79,6 +86,7 @@ class ClientesController extends Controller {
 		}
 		header( "Location: " . $this->site_url( "clientes" ) );
 	}
+	
 	public function date2db($data){
 		if(!empty($data)):
 			$data = explode("/", $data);

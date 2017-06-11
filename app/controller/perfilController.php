@@ -11,8 +11,16 @@ class PerfilController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->perfil = new PerfilDAO();
+		if( !isset( $_SESSION['autenticado'] ) ) {
+			$_SESSION['danger'] = "Acesso negado, efetue o login!";
+			// Se não haver usuário logado, redireciona para a tela de login
+			header('Location: ' . $this->site_url('login'));
+		} else {
+			$this->perfil = new PerfilDAO();
+		}
+
 	}
+	
 	public function index(){
 
 		//enviando a view da função

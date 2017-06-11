@@ -13,9 +13,18 @@ class MedicosController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->medico = new MedicoDAO();
-		$this->especialidade = new EspecialidadeDAO();
+
+		if( !isset( $_SESSION['autenticado'] ) ) {
+			$_SESSION['danger'] = "Acesso negado, efetue o login!";
+			// Se não haver usuário logado, redireciona para a tela de login
+			header('Location: ' . $this->site_url('login'));
+		} else {
+			$this->medico = new MedicoDAO();
+			$this->especialidade = new EspecialidadeDAO();
+		}
+
 	}
+	
 	public function index(){
 
 		//enviando a view da função

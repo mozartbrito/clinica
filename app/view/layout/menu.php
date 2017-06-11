@@ -40,21 +40,25 @@
           </ul>
         </li>
       </ul>
+
+      <?php if ( isset( $_SESSION['autenticado'] ) ) { ?>
       
-      <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="#">Link</a></li> -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário Logado <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-cog"> Perfil</a></li>
-            <li><a href="<?php echo BASE_URL; ?>usuarios" class="glyphicon glyphicon-user"> Usuários</a></li>
-            <li><a href="<?php echo BASE_URL; ?>perfil" class="glyphicon glyphicon-user"> Perfils</a></li>
-            <!-- <li><a href="<?php echo BASE_URL; ?>">Something else here</a></li> -->
-            <li role="separator" class="divider"></li>
-            <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-log-out"> Sair</a></li>
-          </ul>
-        </li>
-      </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a href="#">Link</a></li> -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['autenticado']['nome']; ?> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-cog"> Perfil</a></li>
+              <li><a href="<?php echo BASE_URL; ?>usuarios" class="glyphicon glyphicon-user"> Usuários</a></li>
+              <li><a href="<?php echo BASE_URL; ?>perfil" class="glyphicon glyphicon-user"> Perfils</a></li>
+              <!-- <li><a href="<?php echo BASE_URL; ?>">Something else here</a></li> -->
+              <li role="separator" class="divider"></li>
+              <li><a href="<?php echo BASE_URL; ?>login/logout" class="glyphicon glyphicon-log-out"> Sair</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <?php } ?>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
