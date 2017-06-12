@@ -48,7 +48,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['autenticado']['nome']; ?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="<?php echo BASE_URL; ?>" class="glyphicon glyphicon-ok"> Meu Perfil</a></li>
+              <li><a href="<?php echo BASE_URL; ?>usuarios/meuPerfil/id/<?php echo $_SESSION['autenticado']['id']; ?>" class="glyphicon glyphicon-ok"> Meu Perfil</a></li>
               <li><a href="<?php echo BASE_URL; ?>usuarios" class="glyphicon glyphicon-user"> Usuários</a></li>
               <li><a href="<?php echo BASE_URL; ?>perfil" class="glyphicon glyphicon-cog"> Perfils</a></li>
               <!-- <li><a href="<?php echo BASE_URL; ?>">Something else here</a></li> -->

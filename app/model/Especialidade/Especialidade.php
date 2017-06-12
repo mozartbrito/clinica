@@ -5,7 +5,6 @@ namespace App\Model\Especialidade;
 		private $id;
 		private $especialidade;
 		private $descricao;
-	
 
     /**
      * Gets the value of id.

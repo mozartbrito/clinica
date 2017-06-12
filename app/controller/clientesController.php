@@ -50,7 +50,7 @@ class ClientesController extends Controller {
 		$_cliente = new Cliente();
 
 		$_cliente->setNome( $_POST['nome'] );
-		$_cliente->setDataNascimento( $this->date2db($_POST['data_nascimento']) );
+		$_cliente->date2db($_POST['data_nascimento']);
 		$_cliente->setCi( $_POST['ci'] );
 		$_cliente->setCpf( $_POST['cpf'] );
 		$_cliente->setEndereco( $_POST['endereco'] );
@@ -85,16 +85,6 @@ class ClientesController extends Controller {
 			$_SESSION['danger'] = "Cliente não removido!";
 		}
 		header( "Location: " . $this->site_url( "clientes" ) );
-	}
-	
-	public function date2db($data){
-		if(!empty($data)):
-			$data = explode("/", $data);
-			$data = $data[2] . '-' . $data[1] . '-' . $data[0];
-		else:
-			$data = '0000-00-00';
-		endif;
-		return $data;
 	}
 
 }

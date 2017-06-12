@@ -1,12 +1,13 @@
 <?php
 namespace App\Model\Usuario;
+use App\Model\Perfil\Perfil;
 
 	class Usuario {
 		private $id;
 		private $nome;
 		private $login;
 		private $senha;
-		private $perfil_id;
+		private $perfil;
 		private $ci;
 		private $cpf;
 		private $endereco;
@@ -18,8 +19,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getId()
-        {
+        public function getId() {
             return $this->id;
         }
 
@@ -30,8 +30,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setId($id)
-        {
+        public function setId($id) {
             $this->id = $id;
 
             return $this;
@@ -42,8 +41,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getNome()
-        {
+        public function getNome() {
             return $this->nome;
         }
 
@@ -54,8 +52,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setNome($nome)
-        {
+        public function setNome($nome) {
             $this->nome = $nome;
 
             return $this;
@@ -66,8 +63,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getLogin()
-        {
+        public function getLogin() {
             return $this->login;
         }
 
@@ -78,8 +74,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setLogin($login)
-        {
+        public function setLogin($login) {
             $this->login = $login;
 
             return $this;
@@ -90,8 +85,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getSenha()
-        {
+        public function getSenha() {
             return $this->senha;
         }
 
@@ -102,8 +96,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setSenha($senha)
-        {
+        public function setSenha($senha) {
             $this->senha = $senha;
 
             return $this;
@@ -114,21 +107,19 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getPerfilId()
-        {
-            return $this->perfil_id;
+        public function getPerfil() {
+            return $this->perfil;
         }
 
         /**
          * Sets the value of perfil_id.
          *
-         * @param mixed $perfil_id the perfil id
+         * @param mixed $perfil_id the perfil
          *
          * @return self
          */
-        public function setPerfilId($perfil_id)
-        {
-            $this->perfil_id = $perfil_id;
+        public function setPerfil(Perfil $perfil) {
+            $this->perfil = $perfil;
 
             return $this;
         }
@@ -138,8 +129,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getCi()
-        {
+        public function getCi() {
             return $this->ci;
         }
 
@@ -150,8 +140,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setCi($ci)
-        {
+        public function setCi($ci) {
             $this->ci = $ci;
 
             return $this;
@@ -162,8 +151,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getCpf()
-        {
+        public function getCpf() {
             return $this->cpf;
         }
 
@@ -174,8 +162,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setCpf($cpf)
-        {
+        public function setCpf($cpf) {
             $this->cpf = $cpf;
 
             return $this;
@@ -186,8 +173,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getEndereco()
-        {
+        public function getEndereco() {
             return $this->endereco;
         }
 
@@ -198,8 +184,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setEndereco($endereco)
-        {
+        public function setEndereco($endereco) {
             $this->endereco = $endereco;
 
             return $this;
@@ -210,8 +195,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getFone()
-        {
+        public function getFone() {
             return $this->fone;
         }
 
@@ -222,8 +206,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setFone($fone)
-        {
+        public function setFone($fone) {
             $this->fone = $fone;
 
             return $this;
@@ -234,8 +217,7 @@ namespace App\Model\Usuario;
          *
          * @return mixed
          */
-        public function getCelular()
-        {
+        public function getCelular() {
             return $this->celular;
         }
 
@@ -246,8 +228,7 @@ namespace App\Model\Usuario;
          *
          * @return self
          */
-        public function setCelular($celular)
-        {
+        public function setCelular($celular) {
             $this->celular = $celular;
 
             return $this;

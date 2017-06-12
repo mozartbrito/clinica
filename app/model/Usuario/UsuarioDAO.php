@@ -8,7 +8,7 @@ use System\Model;
 		public function listaTodos() {
 			$this->_tabela = 'usuario u';
 
-			$select['fields'] = "u.*, p.id AS id_perfil, p.perfil, p.descricao";
+			$select['fields'] = "u.*";
 			$select['join'] = "LEFT JOIN perfil p ON u.perfil_id = p.id";
 			return $this->listar($this->_class, $select);
 		}
@@ -16,7 +16,7 @@ use System\Model;
 		public function listaUnico($id = '', Array $usuario = null ){
 			$this->_tabela = 'usuario u';
 
-			$select['fields'] = "u.*, p.id AS id_perfil, p.perfil, p.descricao";
+			$select['fields'] = "u.*";
 			$select['join'] = "LEFT JOIN perfil p ON u.perfil_id = p.id";
 
 			if( $id != '' ) {
@@ -32,7 +32,7 @@ use System\Model;
 		public function insere(Usuario $usuario){
 			$sql = $this->db->prepare("INSERT INTO {$this->_tabela} (nome, login, senha, perfil_id, ci, cpf, endereco, fone, celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-			$sql->execute( array( $usuario->getNome(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getPerfilId(), $usuario->getCi(), $usuario->getCpf(), $usuario->getEndereco(), $usuario->getFone(), $usuario->getCelular() ) );
+			$sql->execute( array( $usuario->getNome(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getPerfil()->getId(), $usuario->getCi(), $usuario->getCpf(), $usuario->getEndereco(), $usuario->getFone(), $usuario->getCelular() ) );
 		
 			return $this->db->lastInsertId();
 		}
@@ -40,7 +40,7 @@ use System\Model;
 		public function atualiza(Usuario $usuario){
 			$sql = $this->db->prepare("UPDATE {$this->_tabela} SET nome = ?, login = ?, senha = ?, perfil_id = ?, ci = ?, cpf = ?, endereco = ?, fone = ?, celular = ? WHERE id = ?");
 
-			$sql->execute( array( $usuario->getNome(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getPerfilId(), $usuario->getCi(), $usuario->getCpf(), $usuario->getEndereco(), $usuario->getFone(), $usuario->getCelular(), $usuario->getId() ) );
+			$sql->execute( array( $usuario->getNome(), $usuario->getLogin(), $usuario->getSenha(), $usuario->getPerfil()->getId(), $usuario->getCi(), $usuario->getCpf(), $usuario->getEndereco(), $usuario->getFone(), $usuario->getCelular(), $usuario->getId() ) );
 		}
 
 		public function deleta($id){

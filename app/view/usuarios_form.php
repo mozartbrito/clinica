@@ -57,7 +57,7 @@
 	    <select class="form-control" id="perfil_id" name="perfil_id">
 	    	<option value="">Perfil de Usuário</option>
 	    	<?php foreach ($perfis as $perfil) { ?>
-	    		<option value="<?php echo $perfil->getId(); ?>" <?php echo ( isset( $usuario ) ) ? ( $usuario->getPerfilId() == $perfil->getId() ) ? 'selected' : '' : ''; ?>><?php echo $perfil->getPerfil(); ?></option>
+	    		<option value="<?php echo $perfil->getId(); ?>" <?php echo ( isset( $usuario ) ) ? ( $usuario->getPerfil()->getId() == $perfil->getId() ) ? 'selected' : '' : ''; ?>><?php echo $perfil->getPerfil(); ?></option>
 	    	<?php } ?>
 	    </select>
 	  </div>

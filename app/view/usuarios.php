@@ -21,7 +21,7 @@
 			<td><?php echo $usuario->getNome(); ?></td>
 			<td><?php echo $usuario->getLogin(); ?></td>
 			<td><?php echo $usuario->getFone().' / '.$usuario->getCelular(); ?></td>
-			<td><?php echo $usuario->perfil; ?></td>
+			<td><?php echo $usuario->getPerfil()->getPerfil(); ?></td>
 			<td>
 				<a href="<?php echo BASE_URL; ?>usuarios/form/id/<?php echo $usuario->getId(); ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 				<a href="<?php echo BASE_URL; ?>usuarios/remove/id/<?php echo $usuario->getId(); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>

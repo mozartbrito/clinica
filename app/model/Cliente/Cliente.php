@@ -252,4 +252,24 @@ namespace App\Model\Cliente;
 
         return $this;
     }
+
+    public function date2db($data){
+        if(!empty($data)):
+            $data = explode("/", $data);
+            $data = $data[2] . '-' . $data[1] . '-' . $data[0];
+        else:
+            $data = '0000-00-00';
+        endif;
+        $this->data_nascimento = $data;
+    }
+
+    public function dataFormatada(){
+        if( !empty( $this->data_nascimento ) ) {
+            $data = explode("-", $this->data_nascimento );
+            $data = $data[2] . '/' . $data[1] . '/' . $data[0];
+        } else {
+            $data = '';
+        }
+        return $data;
+    }
 }

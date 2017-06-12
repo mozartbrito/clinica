@@ -3,6 +3,7 @@ namespace App\Controller;
 use System\Controller;
 use app\model\Usuario\Usuario;
 use app\model\Usuario\UsuarioDAO;
+use app\model\Perfil\Perfil;
 use app\model\Perfil\PerfilDAO;
 
 class UsuariosController extends Controller {
@@ -26,8 +27,13 @@ class UsuariosController extends Controller {
 	public function index(){
 		//enviando a view da função
 		$data['view'] = 'usuarios';
+		$_usuarios = $this->usuario->listaTodos();
+		foreach ($_usuarios as $_usuario) {
+			$_perfil = $this->perfil->listaUnico( $_usuario->perfil_id );
+			$_usuario->setPerfil( $_perfil );
+		}
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
-		$data['data']['usuarios'] = $this->usuario->listaTodos(); 
+		$data['data']['usuarios'] = $_usuarios;
 
 		//carregando o template principal
 		$this->view('layout/principal', $data);
@@ -38,10 +44,12 @@ class UsuariosController extends Controller {
 		//enviando a view da função
 		$data['view'] = 'usuarios_form';
 
-		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
 		if ( isset( $parametros['id'] ) ) {
-			$data['data']['usuario'] = $this->usuario->listaUnico( $parametros['id'] );
-			// echo "<pre>"; print_r( $data['data']['usuario'] ); die;
+			$_usuario = $this->usuario->listaUnico( $parametros['id'] );
+			$_perfil = $this->perfil->listaUnico( $_usuario->perfil_id );
+			$_usuario->setPerfil( $_perfil );
+		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
+			$data['data']['usuario'] = $_usuario;
 		}
 		// Lista de perfis cadastrados
 		$data['data']['perfis'] = $this->perfil->listaTodos();
@@ -49,14 +57,15 @@ class UsuariosController extends Controller {
 		//carregando o template principal
 		$this->view('layout/principal', $data);
 	}
-
 	public function salvar(){
+		$_perfil = new Perfil();
+		$_perfil->setId( $_POST['perfil_id'] );
+
 		$_usuario = new Usuario();
-		
 		$_usuario->setNome( $_POST['nome'] );
 		$_usuario->setLogin( $_POST['login'] );
 		$_usuario->setSenha( $_POST['senha'] );
-		$_usuario->setPerfilId( $_POST['perfil_id'] );
+		$_usuario->setPerfil( $_perfil );
 		$_usuario->setCi( $_POST['ci'] );
 		$_usuario->setCpf( $_POST['cpf'] );
 		$_usuario->setEndereco( $_POST['endereco'] );
@@ -89,6 +98,22 @@ class UsuariosController extends Controller {
 			$_SESSION['danger'] = "Usuário não removido!"; 
 		}
 		header( "Location: " . $this->site_url( "usuarios" ) );
+	}
+
+	public function meuPerfil() {
+		$parametros = $this->getParam();
+		if ( $parametros['id'] == $_SESSION['autenticado']['id'] ){
+			// Informando a view
+			$data['view'] = 'usuarios_perfil';
+			// Retornando o usuário do banco
+			$data['data']['usuario'] = $this->usuario->listaUnico( $parametros['id'] );
+			//carregando o template principal
+			$this->view('layout/principal', $data);
+		} else {
+			// Se o id do usuário for diferente do usuário logado, redireciona para o usuário logado
+			header( "Location: " . $this->site_url( "usuarios/meuPerfil/id/" . $_SESSION['autenticado']['id'] ) );
+		}
+
 	}
 
 }

@@ -17,7 +17,7 @@
     <select class="form-control" name="especialidade_id" id="especialidade">
       <option value="">Selecione a Especialidade</option>
       <?php foreach ($especialidades as $especialidade) { ?>
-        <option value="<?php echo $especialidade->getId(); ?>" <?php echo ( isset( $medico ) && $medico->getEspecialidade() == $especialidade->getId() ) ? "selected" : ""; ?>><?php echo $especialidade->getEspecialidade(); ?></option>
+        <option value="<?php echo $especialidade->getId(); ?>" <?php echo ( isset( $medico ) && $medico->getEspecialidade()->getId() == $especialidade->getId() ) ? "selected" : ""; ?>><?php echo $especialidade->getEspecialidade(); ?></option>
       <?php } ?>
     </select>
   </div>
