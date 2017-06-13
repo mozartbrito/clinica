@@ -39,6 +39,9 @@
             <li><a href="<?php echo BASE_URL; ?>clientes/form">Cadastrar</a></li>
           </ul>
         </li>
+
+        <li><a href="<?php echo BASE_URL; ?>agenda">Agenda Completa</a></li>
+        <!-- <li><a href="<?php echo BASE_URL; ?>clientes">Avaliações</a></li> -->
       </ul>
 
       <?php if ( isset( $_SESSION['autenticado'] ) ) { ?>

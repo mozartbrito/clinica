@@ -50,7 +50,8 @@
     <div class="form-group col-md-3 col-sm-6 col-xs-12">
       <label for="celular">Celular</label>
       <input type="text" class="form-control telefone" id="celular" name="celular" placeholder="Celular do cliente" value="<?php echo ( isset( $cliente ) ) ? $cliente->getCelular() : ''; ?>">
-    </div>
+    </div> 
+
   </div>
   
 

@@ -1,4 +1,6 @@
-<h2>Clínica CEO :: Agenda do dia</h2>
+<h2>Clínica CEO :: Agenda</h2>
+
+<a href="<?php echo BASE_URL; ?>agenda/form"><button class="btn btn-default">Novo</button></a>
 
 <div class="table-responsive">
 	<table class="table table-hover table-striped table-bordered">
@@ -22,6 +24,7 @@
 					<td><?php echo $agenda->getStatus(); ?></td>
 					<td>
 						<a href="<?php echo BASE_URL; ?>agenda/form/id/<?php echo $agenda->getId(); ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+						<a href="<?php echo BASE_URL; ?>agenda/remove/id/<?php echo $agenda->getId(); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 					</td>
 				</tr>
 			<?php } ?>

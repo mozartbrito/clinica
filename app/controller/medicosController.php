@@ -11,8 +11,7 @@ class MedicosController extends Controller {
 	private $medico;
 	private $especialidade;
 
-	public function __construct()
-	{
+	public function __construct()	{
 		parent::__construct();
 
 		if( !isset( $_SESSION['autenticado'] ) ) {
