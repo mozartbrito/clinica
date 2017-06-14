@@ -6,19 +6,13 @@ use System\Model;
 		public $_class = 'App\Model\Medico\Medico';
 
 		public function listaTodos() {
-			$this->_tabela = 'medico m';
-
-			$select['fields'] = "m.*";
-			$select['join'] = "LEFT JOIN especialidade e ON m.especialidade_id = e.id";
+			$select['fields'] = "*";
 			return $this->listar($this->_class, $select);
 		}
 
 		public function listaUnico($id){
-			$this->_tabela = 'medico m';
-
-			$select['fields'] = "m.*";
-			$select['join'] = "LEFT JOIN especialidade e ON m.especialidade_id = e.id";
-			$select['where'] = "m.id = '" . $id . "'";
+			$select['fields'] = "*";
+			$select['where'] = "id = '" . $id . "'";
 			return $this->listarUm($this->_class, $select);
 		}
 

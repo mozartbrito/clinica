@@ -39,10 +39,9 @@
       <label for="status">Situação</label>
       <select type="text" class="form-control" id="status" name="status" required>
         <option value="">Selecione</option>
-        <option value="Agendado" <?php echo ( isset( $agenda ) && $agenda->getStatus() == "Agendado" ) ? 'selected' : ''; ?>>Agendado</option>
-        <option value="Em espera" <?php echo ( isset( $agenda ) && $agenda->getStatus() == "Em espera" ) ? 'selected' : ''; ?>>Em espera</option>
-        <option value="Cancelado" <?php echo ( isset( $agenda ) && $agenda->getStatus() == "Cancelado" ) ? 'selected' : ''; ?>>Cancelado</option>
-        <option value="Realizado" <?php echo ( isset( $agenda ) && $agenda->getStatus() == "Realizado" ) ? 'selected' : ''; ?>>Realizado</option>
+        <?php foreach ($situacoes as $situacao) { ?>
+          <option value="<?php echo $situacao; ?>" <?php echo ( isset( $agenda ) && $agenda->getStatus() == $situacao ) ? 'selected' : ''; ?>><?php echo $situacao; ?></option>
+        <?php } ?>
       </select>
     </div>
   </div>

@@ -25,10 +25,10 @@ class IndexController extends Controller {
 	}
 
 	public function index(){
-		$hoje = date('Y-m-d');
-		$data['inicio'] = $hoje . ' 00:00:00';
-		$data['fim'] = $hoje . ' 23:59:59';
-		$_agendas = $this->agenda->listaTodos( $data ); 
+		$hoje = date('d/m/Y');
+		$filtros['inicio'] = $hoje . ' 00:00';
+		$filtros['fim'] = $hoje . ' 23:59';
+		$_agendas = $this->agenda->listaTodos( $filtros ); 
 		foreach ($_agendas as $_agenda) {
 			// Busca as informações do cliente
 			$_cliente = $this->cliente->listaUnico( $_agenda->cliente_id );

@@ -30,11 +30,13 @@ class AgendaController extends Controller {
 	}
 	
 	public function index(){
-		$data['inicio'] = ( isset( $_POST['inicio'] ) ) ? $_POST['inicio'] : '';
-		$data['fim'] = ( isset( $_POST['fim'] ) ) ? $_POST['fim'] : '';
-		$data['status'] = ( isset( $_POST['status'] ) ) ? $_POST['status'] : '';
+		$filtros = array();
+		if( isset( $_POST['inicio'] ) && $_POST['inicio'] != '' ) $filtros['inicio'] = $_POST['inicio'];
+		if( isset( $_POST['fim'] ) && $_POST['fim'] != '' ) $filtros['fim'] = $_POST['fim'];
+		if( isset( $_POST['status'] ) && $_POST['status'] != '' ) $filtros['status'] = $_POST['status'];
+
 		// Lista os médicos e relaciona cada especialidade com o mesmo
-		$_agendas = $this->agenda->listaTodos( $data ); 
+		$_agendas = $this->agenda->listaTodos( $filtros ); 
 		foreach ($_agendas as $_agenda) {
 			// Busca as informações do cliente
 			$_cliente = $this->cliente->listaUnico( $_agenda->cliente_id );
@@ -44,10 +46,14 @@ class AgendaController extends Controller {
 			$_agenda->setMedico( $_medico );
 		}
 
+		$data['data']['situacoes'] = array( "Agendado", "Em espera", "Cancelado", "Realizado");
 		//enviando a view da função
 		$data['view'] = 'agenda';
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
 		$data['data']['agendas'] = $_agendas;
+		foreach ($filtros as $key => $value) {
+			$data['data'][$key] = $value;
+		}
 
 		//carregando o template principal
 		$this->view('layout/principal', $data);
@@ -60,7 +66,8 @@ class AgendaController extends Controller {
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
 		$data['data']['medicos'] = $this->medico->listaTodos();
 		$data['data']['clientes'] = $this->cliente->listaTodos();
-		
+		$data['data']['situacoes'] = array( "Agendado", "Em espera", "Cancelado", "Realizado");
+
 		if ( isset( $parametros['id'] ) ) {
 			$_agenda = $this->agenda->listaUnico( $parametros['id'] );
 			// Busca as informações do cliente
@@ -117,6 +124,23 @@ class AgendaController extends Controller {
 			$_SESSION['danger'] = "Agendamento não removido!"; 
 		}
 		header( "Location: " . $this->site_url( "agenda" ) );
+	}
+
+	public function altera(){
+		$parametros = $this->getParam();
+		$_agenda = $this->agenda->listaUnico( $parametros['id'] );
+		if( $parametros['status'] == 'em_espera' ) $_agenda->setStatus( 'Em espera' );
+
+		$_cliente = new Cliente();
+		$_cliente->setId( $_agenda->cliente_id );
+		$_agenda->setCliente( $_cliente );
+		$_medico = new Medico();
+		$_medico->setId( $_agenda->medico_id );
+		$_agenda->setMedico( $_medico );
+
+		$this->agenda->atualiza( $_agenda );
+		$_SESSION['success'] = "Situação alterada com sucesso!";
+		header( "Location: " . $this->site_url() );
 	}
 
 }

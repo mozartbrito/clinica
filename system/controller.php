@@ -3,6 +3,11 @@ namespace System;
 
 class Controller extends System {
 
+	public function __construct(){
+		parent::__construct();
+		date_default_timezone_set('America/Sao_Paulo');
+	}
+
 	protected function view( $name, $data = null ){
 		if( is_array($data) && count($data) > 0 ){
 			extract($data);

@@ -164,4 +164,39 @@ use App\Model\Cliente\Cliente;
         }
         return $data;
     }
+
+    public function verificaClasseCor() {
+        if( $this->status == 'Realizado' ) : $classe = 'success text-success';
+        elseif( $this->status == 'Em espera' ) : $classe = 'warning text-warning';
+        elseif( $this->status == 'Cancelado' ) : $classe = 'danger text-danger';
+        elseif( $this->status == 'Agendado' ) : 
+            $classe = ( $this->data_hora < date('Y-m-d H:m:i') ) ? 'active text-danger' : 'active text-active';
+        endif;
+        return $classe;
+    }
+
+    // public function verificaIcon( $_status ) {
+    //     $icon = '<span class="glyphicon glyphicon-';
+    //     $s = 'ok-circle text-success'; $w = 'time text-warning';
+    //     $d = 'ban-circle text-danger'; $a = 'calendar text-active';
+
+    //     if( $this->status != $_status ) :
+    //         if( $this->status == 'Realizado' || $this->status == 'Cancelado' ) : return '';
+    //         else :
+    //             if( $this->status == 'Em espera' ) :
+    //                 if( $_status == 'Realizado' ) : $icon .= $s;
+    //                 elseif ( $_status == 'Cancelado' ) : $icon .= $d;
+    //                 endif;
+    //             elseif( $this->status == 'Agendado' ) :
+    //                 if( $_status == 'Realizado' ) : $icon .= $s;
+    //                 elseif ( $_status == 'Cancelado' ) : $icon .= $d;
+    //                 elseif ( $_status == 'Em espera' ) : $icon .= $w;
+    //                 endif;
+    //             endif;
+    //             $icon .= '"></span>';
+    //             return $icon;
+    //         endif;
+    //     else : return ''; 
+    //     endif;
+    // }
 }
