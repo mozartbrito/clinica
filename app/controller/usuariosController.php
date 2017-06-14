@@ -57,6 +57,7 @@ class UsuariosController extends Controller {
 		//carregando o template principal
 		$this->view('layout/principal', $data);
 	}
+	
 	public function salvar(){
 		$_perfil = new Perfil();
 		$_perfil->setId( $_POST['perfil_id'] );
