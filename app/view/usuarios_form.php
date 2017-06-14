@@ -54,7 +54,7 @@
 
 	  <div class="form-group col-md-4 col-sm-4 col-xs-12">
 	    <label for="perfil_id">Perfil</label>
-	    <select class="form-control" id="perfil_id" name="perfil_id">
+	    <select class="form-control" id="perfil_id" name="perfil_id" required>
 	    	<option value="">Perfil de Usuário</option>
 	    	<?php foreach ($perfis as $perfil) { ?>
 	    		<option value="<?php echo $perfil->getId(); ?>" <?php echo ( isset( $usuario ) ) ? ( $usuario->getPerfil()->getId() == $perfil->getId() ) ? 'selected' : '' : ''; ?>><?php echo $perfil->getPerfil(); ?></option>

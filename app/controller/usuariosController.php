@@ -84,8 +84,13 @@ class UsuariosController extends Controller {
 			$_SESSION['danger'] = "Não foi possível efetuar o cadastro!";
 			header( "Location: " . $this->site_url( "usuarios/form" ) );
 		} else {
-			$_SESSION['success'] = "Usuário salvo com sucesso!";
-			header( "Location: " . $this->site_url( "usuarios/form/id/" . $id ) );
+			if( isset( $_POST['page'] ) ) {
+				$_SESSION['success'] = "Perfil salvo com sucesso!";
+				header( "Location: " . $this->site_url( "usuarios/meuPerfil/id/" . $id ) );
+			} else {	
+				$_SESSION['success'] = "Usuário salvo com sucesso!";
+				header( "Location: " . $this->site_url( "usuarios/form/id/" . $id ) );
+			}
 		} 
 	}
 
@@ -106,7 +111,12 @@ class UsuariosController extends Controller {
 			// Informando a view
 			$data['view'] = 'usuarios_perfil';
 			// Retornando o usuário do banco
-			$data['data']['usuario'] = $this->usuario->listaUnico( $parametros['id'] );
+			$_usuario = $this->usuario->listaUnico( $parametros['id'] );
+			$_perfil = $this->perfil->listaUnico( $_usuario->perfil_id );
+			$_usuario->setPerfil( $_perfil );
+			$data['data']['usuario'] = $_usuario;
+			// Lista de perfis cadastrados
+			$data['data']['perfis'] = $this->perfil->listaTodos();
 			//carregando o template principal
 			$this->view('layout/principal', $data);
 		} else {
