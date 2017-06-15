@@ -30,9 +30,14 @@
       <input type="text" class="form-control datepicker" id="data_nascimento" name="data_nascimento" placeholder="Data de nascimento" value="<?php if( isset( $cliente ) ) echo $cliente->dataFormatada(); ?>">
     </div>
 
-    <div class="form-group col-md-8 col-sm-8 col-xs-12">
+    <div class="form-group col-md-4 col-sm-4 col-xs-12">
       <label for="endereco">Endereço</label>
       <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço do cliente" value="<?php echo ( isset( $cliente ) ) ? $cliente->getEndereco() : ''; ?>">
+    </div>
+
+    <div class="form-group col-md-4 col-sm-4 col-xs-12">
+      <label for="profissao">Profissão</label>
+      <input type="text" class="form-control" id="profissao" name="profissao" placeholder="Profissão do cliente" value="<?php echo ( isset( $cliente ) ) ? $cliente->getProfissao() : ''; ?>">
     </div>
   </div>
     

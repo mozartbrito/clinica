@@ -66,3 +66,4 @@
   </div><!-- /.container-fluid -->
 </nav>
 <a href="javascript:history.back(-1)" class="btn btn-warning pull-right">Voltar</a>
+<a href="javascript:print()" class="btn btn-default pull-right" style="margin-right: 3px;"><span class="glyphicon glyphicon-print text-primary"></span></a>
