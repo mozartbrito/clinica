@@ -146,10 +146,9 @@ use App\Model\Cliente\Cliente;
     public function date2db($data){
         if(!empty($data)){
             $data = explode("/", $data);
-            $data[2] = explode(" ", $data[2]);
-            $data = $data[2][0] . '-' . $data[1] . '-' . $data[0] . ' ' . $data[2][1];
+            $data = $data[2] . '-' . $data[1] . '-' . $data[0];
         } else {
-            $data = '0000-00-00 00:00';
+            $data = '0000-00-00';
         }
         $this->data_avaliacao = $data;
     }
@@ -157,8 +156,7 @@ use App\Model\Cliente\Cliente;
     public function dataFormatada(){
         if( !empty( $this->data_avaliacao ) ) {
             $data = explode("-", $this->data_avaliacao );
-            $data[2] = explode(" ", $data[2] );
-            $data = $data[2][0] . '/' . $data[1] . '/' . $data[0] . ' ' . $data[2][1];
+            $data = $data[2] . '/' . $data[1] . '/' . $data[0];
         } else {
             $data = '';
         }

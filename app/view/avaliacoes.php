@@ -7,7 +7,7 @@
 		  	<th>Data</th>
 		  	<!-- <th>Descrição</th> -->
 		  	<th>Médico</th>
-		  	<!-- <th>Cliente</th> -->
+		  	<th>Cliente</th>
 		  	<th>Situação</th>
 		  	<th>Ações</th>
 		  </tr>
@@ -19,7 +19,7 @@
 					<td><?php echo $avaliacao->dataFormatada(); ?></td>
 					<!-- <td><?php //echo $avaliacao->getDescricao(); ?></td> -->
 					<td><?php echo $avaliacao->getMedico()->getNome(); ?></td>
-					<!-- <td><?php //echo $avaliacao->getCliente()->getNome(); ?></td> -->
+					<td><?php echo $avaliacao->getCliente()->getNome(); ?></td>
 					<td style="text-transform: uppercase;"><?php echo $avaliacao->getStatus(); ?></td>
 					<td>
 						<a href="<?php echo BASE_URL; ?>avaliacoes/form/id/<?php echo $avaliacao->getId(); ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>

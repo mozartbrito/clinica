@@ -35,7 +35,7 @@ class LoginController extends Controller {
 				header('Location: ' . $this->site_url('login'));
 			} else {
 				$_usuario = new Usuario();
-				$_usuario = $this->usuario->listaUnico( null, array( "login" => $_POST['login'], "senha" => $_POST['senha'] ) );
+				$_usuario = $this->usuario->listaUnico( null, array( "login" => addslashes( $_POST['login'] ), "senha" => addslashes( $_POST['senha'] ) ) );
 
 				if($_usuario == NULL) {
 					$_SESSION['danger'] = 'Erro ao efetuar login, verifique os campos digitados!';

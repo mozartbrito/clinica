@@ -21,6 +21,7 @@
 				<td><?php echo $cliente->getFone().' / '.$cliente->getCelular(); ?></td>
 				<td><?php echo $cliente->getEmail(); ?></td>
 				<td>
+					<a href="<?php echo BASE_URL; ?>avaliacoes/form/cliente_id/<?php echo $cliente->getId(); ?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
 					<a href="<?php echo BASE_URL; ?>clientes/form/id/<?php echo $cliente->getId(); ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 					<a href="<?php echo BASE_URL; ?>clientes/remove/id/<?php echo $cliente->getId(); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 				</td>

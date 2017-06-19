@@ -14,7 +14,7 @@ class AvaliacoesController extends Controller {
 	private $medico;
 	private $cliente;
 
-	public function __construct()	{
+	public function __construct() {
 		parent::__construct();
 
 		if( !isset( $_SESSION['autenticado'] ) ) {
@@ -69,6 +69,8 @@ class AvaliacoesController extends Controller {
 			$_avaliacao->setMedico( $_medico );
 		//enviando os dados necessários (se não houver, enviar $data['data'] = '')
 			$data['data']['avaliacao'] = $_avaliacao;
+		} else if ( isset( $parametros['cliente_id'] ) ) {
+			$data['data']['cliente_id'] = $parametros['cliente_id'];
 		}
 
 		//carregando o template principal
