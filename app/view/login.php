@@ -34,6 +34,7 @@
       <h3 align="center" class="text-primary"><strong>Área Restrita</strong></h3>
     </div>
     <div class="panel-body">
+      <?php $this->view('layout/mensagem'); ?>
       <form method="POST" action="<?php echo BASE_URL; ?>login/logar">
 
       		<div class="form-group">
